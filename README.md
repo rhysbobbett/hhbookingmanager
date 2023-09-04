@@ -20,7 +20,7 @@ Nyanza: #E8FCCF;
 The colours were selected for their often associated use within the gardening industry with the exception of Nyanza, an off-green/yellow which will be used for contrast.
 
 
-![screenshot](/hhbookingsystem/documentation/colourscheme.png)
+![screenshot](/hhbookingmanager/documentation/colourscheme.png)
 
 
 ### Typography
@@ -65,8 +65,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/HomepageDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/HomepageMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/HomepageDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/HomepageMobile.png) |
 
 <br>
 </details>
@@ -76,8 +76,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/RegistrationDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/RegistrationMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/RegistrationDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/RegistrationMobile.png) |
 
 <br>
 </details>
@@ -87,8 +87,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/LoginDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/LoginMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/LoginDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/LoginMobile.png) |
 
 <br>
 </details>
@@ -98,8 +98,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/CustomerBookingDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/CustomerBookingMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/CustomerBookingDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/CustomerBookingMobile.png) |
 
 <br>
 </details>
@@ -109,8 +109,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/AdminSessionsTrackerDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/AdminSessionsTrackerMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/AdminSessionsTrackerDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/AdminSessionsTrackerMobile.png) |
 
 <br>
 </details>
@@ -120,8 +120,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/SessionsManagerDesktop.png) |
-| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/SessionsManagerMobile.png) |
+| Desktop | ![screenshot](hhbookingmanager/documentation/wireframes/SessionsManagerDesktop.png) |
+| Mobile | ![screenshot](/hhbookingmanager/documentation/wireframes/SessionsManagerMobile.png) |
 
 <br>
 </details>
