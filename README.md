@@ -1,56 +1,127 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hearten Horticulture Booking System
 
-Welcome,
+A local gardening business called Hearten Horticulture requires a booking a system
 
-This is the Code Institute student template for the mongo lessons. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+The project should be able to function as a portal for customers to book sessions without coming into conflict with other customer's booking sessions. The system should be able to tell customers when the company is free to work on their garden while keeping their user data anonymous for others to see.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 3rd, 2023**
 
-## Codeanywhere Reminders
+## UX
+A local business requires an app for their customers to book gardening sessions.
 
-# IDE
+### Colour Scheme
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose option 4.4 for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password *(will not echo **\*\*\*\*** *on screen)\*
+The site features the following colours:
 
-#### Clear screen in Mongo Shell:
+Forest Green Traditional: #134611;
+India Green: #3E8914;
+Green Pigment: #3DA35D;
+Light Green: #96E072;
+Nyanza: #E8FCCF;
+The colours were selected for their often associated use within the gardening industry with the exception of Nyanza, an off-green/yellow which will be used for contrast.
 
-- `cls`
 
-#### Show all database collections:
+![screenshot](/hhbookingsystem/documentation/colourscheme.png)
 
-- `show collections`
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+### Typography
 
-`python3 -m http.server`
+- [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) was used for the primary headers and titles.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Most of the website will use some variation of barlow condensed styled in various ways, such as italic and bold. They will be weighted between 300 and 500. The fallback font will be sans-serif.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+## User Stories
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Site owner goals
+- Give customers a portal in which to book sessions for garden maintence
+- Give the company a way to plan availablity for other projects that aren't garden maintenance.
 
-To log into the Heroku toolbelt CLI:
+### Customer Goals
+As a user:
+- Immeditately know who this site is for
+- Simple navigation and with booking feedback.
+- View the site on mobile so I can book in customer sessions myself in person for elderly customers with no IT experience.
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+As a logged in customer :
+- I need to be able to book sessions, even block book for a few hours.
+- I want to be able to see sessions I have booked in the past and whether they happen or not due to the weather.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+As a admin for the business, I want to :
+- I want to see which sessions users are booking in.
+- Let customers know when I'm not available.
+- Edit and delete sessions.
+- Edit/delete customers we no longer work with.
+- See all sessions booked.
 
----
+## Wireframes
+To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
+I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
 
-Happy coding!
+
+
+<details>
+<summary> Home Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/HomepageDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/HomepageMobile.png) |
+
+<br>
+</details>
+
+<details>
+<summary>Registration Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/RegistrationDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/RegistrationMobile.png) |
+
+<br>
+</details>
+
+<details>
+<summary>Login Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/LoginDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/LoginMobile.png) |
+
+<br>
+</details>
+
+<details>
+<summary>Customer Booking Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/CustomerBookingDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/CustomerBookingMobile.png) |
+
+<br>
+</details>
+
+<details>
+<summary>Adminstration Session Tracking Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/AdminSessionsTrackerDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/AdminSessionsTrackerMobile.png) |
+
+<br>
+</details>
+
+<details>
+<summary>Customer Session Management Page Wireframes</summary>
+
+| Size | Screenshot |
+| --- | --- |
+| Desktop | ![screenshot](hhbookingsystem/documentation/wireframes/SessionsManagerDesktop.png) |
+| Mobile | ![screenshot](/hhbookingsystem/documentation/wireframes/SessionsManagerMobile.png) |
+
+<br>
+</details>
