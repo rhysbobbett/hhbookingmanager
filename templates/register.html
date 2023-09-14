@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card-panel green lighten-2">
+                <h1 class="white-text">Registration</h1>
+                <form method="POST" action="{{ url_for('register') }}" class="white">
+                    <!-- username -->
+                    <div class="input-field">
+                        <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]{7,}"
+                            class="validate">
+                        <label for="username">Username</label>
+                        <span class="helper-text"
+                            data-error="Invalid format. Use at least 7 alphanumeric characters."></span>
+                    </div>
+                    <!-- first name -->
+                    <div class="input-field">
+                        <input type="text" id="first_name" name="first_name" required pattern="[A-Za-z]{2,50}"
+                            class="validate">
+                        <label for="first_name">First Name</label>
+                        <span class="helper-text"
+                            data-error="Invalid format. Use 2 to 50 alphabetical characters."></span>
+                    </div>
+                    <!-- last name -->
+                    <div class="input-field">
+                        <input type="text" id="last_name" name="last_name" required pattern="[A-Za-z]{2,50}"
+                            class="validate">
+                        <label for="last_name">Last Name</label>
+                        <span class="helper-text"
+                            data-error="Invalid format. Use 2 to 50 alphabetical characters."></span>
+                    </div>
+                    <!-- password -->
+                    <div class="input-field">
+                        <input type="password" id="password" name="password" required minlength="8"
+                            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!]).*$" class="validate">
+                        <label for="password">Password</label>
+                        <span class="helper-text"
+                            data-error="Invalid format. Use at least 8 characters with uppercase, lowercase, digits, and special characters."></span>
+                    </div>
+                    <!-- register button-->
+                    <div class="center row">
+                       <button class="btn waves-effect waves-light green" type="submit">Register <i class="fas fa-sign-in-alt"></i></button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
