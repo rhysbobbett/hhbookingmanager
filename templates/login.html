@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card-panel green lighten-2">
+                <h1 class="white-text">Login</h1>
+                <form action="/login" method="post" class="white">
+                    <div class="input-field">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="validate" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="validate" required>
+                    </div>
+                    <button class="btn waves-effect waves-light green" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
