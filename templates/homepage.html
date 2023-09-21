@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="container">
+    <div class="container">
+        <div class="row">
+            <h1 class="center green-text text-darken-3">Welcome to Hearten Horticulture</h1>
+            <Br>
+            <div class="col s6 center">
+                <a href="{{ url_for('register') }}" class="waves-effect waves-light btn green">Register</a>
+            </div>
+            <div class="col s6 center">
+                <a href="{{ url_for('login') }}" class="waves-effect waves-light btn green">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="center">
+                <a href="{{ url_for('bookappointment') }}" class="green waves-effect waves-light btn" aria-label="Book a session">Book a session here!</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
