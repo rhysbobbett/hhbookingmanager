@@ -12,7 +12,7 @@ from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
-app = Flask(__name__, static_folder="hhbookingmanager/assets",
+app = Flask(__name__, static_folder="/hhbookingmanager/assets",
             static_url_path="/assets")
 
 
@@ -136,7 +136,7 @@ def logo_clicked():
 
 
 @app.route("/")
-def homepage():
+def base():
     # Determine if a user is logged in (replace with your own logic)
     is_user_logged_in = current_user.is_authenticated if hasattr(
         current_user, 'is_authenticated') else False
@@ -485,7 +485,7 @@ def not_found_error(e):
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('error505.html'), 500
+    return render_template('error500.html'), 500
 
 
 if __name__ == "__main__":
