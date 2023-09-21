@@ -65,8 +65,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 | Size | Screenshot |
 | --- | --- |
-| Desktop | ![screenshot](/documentation/wireframes/HomepageDesktop.png) |
-| Mobile | ![screenshot](/documentation/wireframes/HomepageMobile.png) |
+| Desktop | ![screenshot](documentation/wireframes/HomepageDesktop.png) |
+| Mobile | ![screenshot](documentation/wireframes/HomepageMobile.png) |
 
 <br>
 </details>
