@@ -12,7 +12,7 @@ from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
-app = Flask(__name__, static_folder="static",)
+app = Flask(__name__, static_folder="static")
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -132,7 +132,7 @@ def base():
 # Logo routing
 @app.route("/logo")
 def serve_logo():
-    return send_from_directory("assets/img/logovector.webp")
+    return send_from_directory("static/img/logovector.webp")
 
 
 @app.route("/logo-clicked")
@@ -491,5 +491,6 @@ def not_found_error(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('error500.html'), 500
+
 
 
