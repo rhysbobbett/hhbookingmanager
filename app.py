@@ -368,3 +368,67 @@ def delete_appointment(sessionId):
             return redirect(url_for('admin'))
         else:
             return redirect(url_for('my_appointments'))
+
+
+# HOLIDAY MANAGEMENT
+@app.route('/holidays')
+@login_required
+@admin_required
+def holidays():
+    holidays = mongo.db.holidays.find()
+
+    return render_template("holidays.html", holidays=holidays)
+
+
+@app.route('/add_holiday', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def add_holiday():
+    if request.method == 'POST':
+        date = request.form.get('date')
+        description = request.form.get('description')
+        new_holiday = {
+            'date': date,
+            'description': description
+        }
+        mongo.db.holidays.insert_one(new_holiday)
+        flash('Holiday added successfully!', 'success')
+        return redirect(url_for('holidays'))
+
+    return render_template('holidays.html')
+
+
+@app.route('/edit_holiday/<string:holidayId>', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_holiday(holidayId):
+    holiday = mongo.db.holidays.find_one({"_id": ObjectId(holidayId)})
+    if request.method == 'POST':
+        date = request.form.get('date')
+        description = request.form.get('description')
+        mongo.db.holidays.update_one(
+            {"_id": ObjectId(holidayId)},
+            {"$set": {"date": date, "description": description}}
+        )
+        flash('Holiday updated successfully!', 'success')
+        return redirect(url_for('holidays'))
+
+    return render_template('edit_holiday.html', holiday=holiday)
+
+
+@app.route('/delete_holiday/<string:holidayId>', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def delete_holiday(holidayId):
+    holiday = mongo.db.holidays.find_one({"_id": ObjectId(holidayId)})
+    if not holiday:
+        flash("Holiday not found.", "error")
+        return redirect(url_for("holidays"))
+    if request.method == 'POST':
+        mongo.db.holidays.delete_one({"_id": ObjectId(holidayId)})
+        flash("Holiday deleted successfully.", "success")
+        return redirect(url_for("holidays"))
+
+    return render_template('delete_holiday.html', holiday=holiday)
+
+
