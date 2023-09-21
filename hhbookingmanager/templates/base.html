@@ -53,6 +53,7 @@
                 {% if current_user.is_authenticated %}
                 {% if current_user.is_admin %}
                 <li><a href="{{ url_for('admin') }}">Administration</a></li>
+                <li><a href="{{ url_for('add_holiday') }}">Holidays</a></li>
                 {% else %}
                 <li><a href="{{ url_for('my_appointments') }}">My Appointments</a></li>
                 {% endif %}
@@ -61,7 +62,7 @@
                 <li><a href="{{ url_for('register') }}">Register</a></li>
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 {% endif %}
-            </ul>    
+            </ul>
         </div>
 
     </header>
@@ -103,18 +104,18 @@
     <!-- Footer -->
     <footer class="page-footer light-green">
         <div class="container fixed-bottom">
-                <a href="https://www.facebook.com/heartenhorticulture" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook fa-3x white-text" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
-                    <i class="fab fa-twitter-square fa-3x white-text" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.youtube.com" target="_blank" aria-label="Youtube">
-                    <i class="fab fa-youtube-square fa-3x white-text" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/heartenhorticulture/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram fa-3x white-text" aria-hidden="true"></i>
-                </a>
+            <a href="https://www.facebook.com/heartenhorticulture" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook fa-3x white-text" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter-square fa-3x white-text" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="Youtube">
+                <i class="fab fa-youtube-square fa-3x white-text" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/heartenhorticulture/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram fa-3x white-text" aria-hidden="true"></i>
+            </a>
             <div class="footnotes center">
                 <span>&copy; <span id="current-year"></span> Rhys Bobbett</span>
                 <span>- For Educational Purposes Only</span>
@@ -143,9 +144,9 @@
         // Function to toggle the footer visibility
         function toggleFooterVisibility() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            footer.style.display = "none";
+                footer.style.display = "none";
             } else {
-            footer.style.display = "block";
+                footer.style.display = "block";
             }
         }
 
