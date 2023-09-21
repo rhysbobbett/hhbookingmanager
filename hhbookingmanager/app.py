@@ -125,9 +125,14 @@ def my_appointments():
     return render_template("my_appointments.html", appointments=appointments)
 
 
-@app.route("/")
+@app.route('/base', methods=["GET", "POST"])
 def base():
-    return render_template("base.html")
+    if request.method == "POST":
+        username = request.form["username"]
+        session["user"] = username
+        return redirect(url_for('home'))
+    return render_template('homepage.html')
+
 
 # Logo routing
 @app.route("/logo")
