@@ -12,8 +12,7 @@ from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
-app = Flask(__name__, static_folder="/hhbookingmanager/assets",
-            static_url_path="/assets")
+app = Flask(__name__, static_folder="static",)
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
