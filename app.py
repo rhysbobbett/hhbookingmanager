@@ -22,10 +22,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# Initialize Flask-Login
 login_manager = LoginManager(app)
 
-
+# Admin required routing
 def admin_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -60,7 +59,7 @@ def load_user(user_id):
         return user
     return None
 
-
+# Login routing
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -71,12 +70,12 @@ def login():
         if user:
             # Ensure hashed password matches user input
             if check_password_hash(user["password"], request.form.get("password")):
-                user_object = User(user)  # Create a User instance
-                login_user(user_object)  # Login the user
+                user_object = User(user)  
+                login_user(user_object)
                 session["user"] = user["username"].lower()
                 flash("Welcome, {}".format(user["username"]))
 
-                # Check if the user is an admin (userId 1 or 2)
+                # Check if the user is an admin
                 if user["userId"] == 1 or user["userId"] ==  2:
                     return redirect(url_for("admin"))
                 else:
@@ -87,7 +86,7 @@ def login():
 
     return render_template("login.html")
 
-
+# Administration page routing
 @app.route("/admin", methods=["GET", "POST"])
 @login_required
 @admin_required
@@ -112,6 +111,7 @@ def admin():
 
     return render_template("admin.html", appointments=appointments, users=users)
 
+# User Appointments landing page
 @app.route("/my_appointments")
 @login_required
 def my_appointments():
@@ -124,7 +124,7 @@ def my_appointments():
 def base():
     return render_template("base.html")
 
-
+# Logo routing
 @app.route("/logo")
 def serve_logo():
     return send_from_directory("assets/img/logovector.webp")
@@ -148,7 +148,7 @@ def homepage():
     return render_template("homepage.html", is_user_logged_in=is_user_logged_in, is_admin=is_admin)
 
 
-# REGISTRATION 
+# Registration Routing
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -188,6 +188,8 @@ def register():
 
     return render_template("register.html")
 
+
+# BOOKING MANAGEMENT
 @app.route('/bookappointment', methods=['GET', 'POST'])
 @login_required
 def bookappointment():
