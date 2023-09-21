@@ -105,6 +105,7 @@ proglog==0.1.10
 prometheus-client==0.13.1
 psutil==5.9.5
 pure-eval==0.2.2
+pywin32>=305,<307
 PyAudio==0.2.13
 pyautocad==0.2.0
 pycodestyle==2.10.0
