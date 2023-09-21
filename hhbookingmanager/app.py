@@ -64,6 +64,10 @@ def serve_static(filename):
     return send_from_directory('static', filename)
 
 
+@app.route('/')
+def index():
+    return render_template('homepage.html')
+
 # Login routing
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -131,7 +135,7 @@ def base():
         username = request.form["username"]
         session["user"] = username
         return redirect(url_for('home'))
-    return render_template('homepage.html')
+    return render_template('base.html')
 
 
 # Logo routing
