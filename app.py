@@ -473,3 +473,16 @@ def logout():
 
     # Redirect the user to the login page (or any other desired page)
     return redirect(url_for("login"))
+
+
+# ERROR HANDLERS
+@app.errorhandler(404)
+def not_found_error(e):
+    return render_template('error404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('error505.html'), 500
+
+
