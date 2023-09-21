@@ -187,3 +187,184 @@ def register():
         return redirect(url_for("register"))
 
     return render_template("register.html")
+
+@app.route('/bookappointment', methods=['GET', 'POST'])
+@login_required
+def bookappointment():
+    if request.method == 'POST':
+        date = request.form.get('date')
+        session_length = request.form.get('sessionLength')
+        session_desc = request.form.get('description')
+        session_id = request.form.get('sessionId')
+
+        # Find the last used sessionId
+        last_session = mongo.db.appointments.find_one(
+            {}, sort=[("sessionId", -1)])
+        if last_session:
+            last_session_id = last_session["sessionId"]
+        else:
+            last_session_id = 0
+
+        # Increment the last_session_id to generate a new sessionId
+        new_session_id = last_session_id + 1
+        # Check if the chosen date is a holiday
+        is_holiday = mongo.db.holidays.find_one(
+            {'date': datetime.strptime(date, '%Y-%m-%d')})
+
+        if is_holiday:
+            flash('The selected date is a holiday and cannot be booked.', 'error')
+        else:
+            # Count the number of existing "half day" appointments for the selected date
+            half_day_appointments_count = mongo.db.appointments.count_documents({
+                'date': datetime.strptime(date, '%Y-%m-%d'),
+                'sessionLength': 'half day'
+            })
+
+            # Check if there are already two "half day" appointments for the selected date
+            if half_day_appointments_count >= 2 and session_length == 'half day':
+                flash(
+                    'Two "half day" appointments are already booked for the selected date. You cannot book another.', 'error')
+            else:
+                # Create a new appointment document
+                appointment = {
+                    'userId': current_user.id,
+                    'fname': getattr(current_user, 'fname', ''),
+                    'lname': getattr(current_user, 'lname', ''),
+                    'date': datetime.strptime(date, '%Y-%m-%d'),
+                    'sessionLength': session_length,
+                    'description': session_desc,
+                    'sessionId': new_session_id,
+                }
+
+                # Insert the new appointment document into the MongoDB collection
+                mongo.db.appointments.insert_one(appointment)
+
+                flash('Appointment created successfully', 'success')
+
+                # Determine the redirect destination based on user role
+                if current_user.is_admin:
+                    return redirect(url_for('admin'))
+                else:
+                    return redirect(url_for('my_appointments'))
+
+        # Handle cases where current_user doesn't have the required attributes
+        flash("User data is incomplete.", "error")
+        return redirect(url_for("homepage"))
+
+    # Get the current user's first name and last name
+    fname = getattr(current_user, 'fname', '')
+    lname = getattr(current_user, 'lname', '')
+
+    # Render the template with the user's first name and last name
+    return render_template("bookappointment.html", fname=fname, lname=lname)
+
+
+@app.route('/manage_sessions', methods=['GET', 'POST'])
+@login_required
+def manage_sessions():
+    if request.method == 'POST':
+        # Retrieve form data
+        user_id = request.form.get('userId')
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
+        session_date_str = request.form.get('date')
+        session_length = request.form.get('sessionLength')
+        description = request.form.get('description')
+
+        # Convert session_date_str to a datetime object
+        session_date = datetime.strptime(session_date_str, '%Y-%m-%d')
+
+        # Find the last used sessionId
+        last_session = mongo.db.appointments.find_one(
+            {}, sort=[("sessionId", -1)])
+        if last_session:
+            last_session_id = last_session["sessionId"]
+        else:
+            last_session_id = 0
+
+        # Increment the last_session_id to generate a new sessionId
+        new_session_id = last_session_id + 1
+
+        # Create a new appointment document with the new sessionId
+        appointment = {
+            'userId': user_id,
+            'fname': fname,
+            'lname': lname,
+            'date': session_date,
+            'sessionLength': session_length,
+            'description': description,
+            'sessionId': new_session_id
+        }
+
+        # Insert the new appointment document into the 'appointments' collection
+        mongo.db.appointments.insert_one(appointment)
+
+        flash('Appointment created successfully!', 'success')
+
+        # Determine the redirect destination based on user role
+        if current_user.is_admin:
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('my_appointments'))
+
+    # Retrieve and pass all appointments data to the template
+    all_appointments = mongo.db.appointments.find()
+    return render_template('my_appointments.html', all_appointments=all_appointments)
+
+
+@app.route('/edit_appointment/<int:sessionId>', methods=['GET', 'POST'])
+@login_required
+def edit_appointment(sessionId):
+    if request.method == "POST":
+        # Get the updated data from the form
+        updated_data = {
+            "date": request.form.get("date"),
+            "sessionLength": request.form.get("sessionLength"),
+            "description": request.form.get("description")
+        }
+
+        # Update the appointment document in the MongoDB collection
+        result = mongo.db.appointments.update_one(
+            {"sessionId": sessionId},
+            {"$set": updated_data}
+        )
+
+        if result.modified_count == 1:
+            flash("Appointment updated successfully", "success")
+        else:
+            flash("Failed to update appointment", "error")
+
+        if current_user.is_admin:
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('my_appointments'))
+
+    # Retrieve the appointment with the given sessionId for editing
+    appointment = mongo.db.appointments.find_one({"sessionId": sessionId})
+
+    if appointment:
+        return render_template("edit_appointment.html", appointment=appointment)
+    else:
+        flash("Appointment not found", "error")
+        return redirect(url_for("admin"))
+
+
+@app.route("/delete_appointment/<int:sessionId>", methods=["POST"])
+@login_required
+def delete_appointment(sessionId):
+    
+    appointment = mongo.db.appointments.find_one({"sessionId": sessionId})
+
+    if not appointment:
+        flash("Appointment not found.", "error")
+    else:
+        if current_user.is_admin or str(current_user.id) == appointment['userId']:
+            mongo.db.appointments.delete_one({"sessionId": sessionId})
+            flash("Appointment deleted successfully.", "success")
+        else:
+            flash("You do not have permission to delete this appointment.", "error")
+
+        if current_user.is_admin:
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('my_appointments'))
