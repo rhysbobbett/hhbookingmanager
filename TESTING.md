@@ -22,64 +22,25 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| base.html | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fhhbookingmanager-bf4877fa0fd9.herokuapp.com%2F) | ![screenshot](documentation/html-validn-base.png) |  |
-| admin.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
-| my_appointments.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
-| error404.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
-| holidays.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
-| homepage.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
-| login.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-vali-base.png) |  |
-| logout.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
+| base.html | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fhhbookingmanager-bf4877fa0fd9.herokuapp.com%2F) | ![screenshot](documentation/html-valid-base.png) |  |
+| admin.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-admin.png) |  |
 | my_appointments.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-my_appointments.png) |  |
+| error404.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-404.png) |  |
+| holidays.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-base.png) |  |
+| homepage.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-homepage.png) |  |
+| login.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-login.png) |  |
 | register.html | [W3C](https://validator.w3.org) | ![screenshot](documentation/html-valid-register.png) |  |
-
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-**IMPORTANT**: Python/Jinja syntax in HTML
-
-Python projects that use Jinja syntax, such as `{% for loops %}`, `{% url 'home' %}`, and `{{ variable|filter }}`
-will not validate properly if you're copying/pasting into the HTML validator.
-
-In order to properly validate these types of files, it's recommended to
-[validate by uri](https://validator.w3.org/#validate_by_uri) from the deployed Heroku pages.
-
-Unfortunately, pages that require a user to be logged-in and authenticated (CRUD functionality),
-will not work using this method, due to the fact that the HTML Validator (W3C) doesn't have
-access to login to your pages.
-In order to properly validate HTML pages with Jinja syntax for authenticated pages, follow these steps:
-
-- Navigate to the deployed pages which require authentication
-- Right-click anywhere on the page, and select **View Page Source** (usually `CTRL+U` or `⌘+U` on Mac).
-- This will display the entire "compiled" code, without any Jinja syntax.
-- Copy everything, and use the [validate by input](https://validator.w3.org/#validate_by_input) method.
-- Repeat this process for every page that requires a user to be logged-in/authenticated.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 ### CSS
 
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-- If you are copying/pasting your HTML code, use this link: https://jigsaw.w3.org/css-validator/#validate_by_input
-- (*recommended*) If you are using the live deployed site, use this link: https://jigsaw.w3.org/css-validator/#validate_by_uri
-
-It's recommended to validate the live site if you only have a single CSS file using the deployed URL.
-This will give you a custom URL as well, which you can use on your testing documentation.
-It makes it easier to return back to the page to validate it again in the future.
-The URL will look something like this:
-
 - https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fhhbookingmanager-bf4877fa0fd9.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#errors
-
-
-
 
 
 | File | Jigsaw URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fhhbookingmanager-bf4877fa0fd9.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#errors) | ![screenshot](documentation/css-validation-style.png) | Pass: 1 error due to Materialize Framework, not an issue |
+| style.css | [Jigsaw](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fhhbookingmanager-bf4877fa0fd9.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#errors) | ![screenshot](documentation/css-validation-style.png) | Pass: 1 error due to Materialize Framework, not a serious issue to be considered |
 
 
 ### Python
@@ -88,7 +49,7 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 | File | CI URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/rhysbobbett/hhbookingmanager/main/run.py) | ![screenshot](documentation/py-validation-run.png) | no errors |
+| run.py | [PEP8 CI](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/rhysbobbett/hhbookingmanager/main/app.py) | ![screenshot](documentation/py-validation-app.png) | no errors |
 | run.py | | ![screenshot](documentation/py-validation-run.png) | no errors |
 
 
