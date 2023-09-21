@@ -59,6 +59,12 @@ def load_user(user_id):
         return user
     return None
 
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('static', filename)
+
+
 # Login routing
 @app.route("/login", methods=["GET", "POST"])
 def login():
