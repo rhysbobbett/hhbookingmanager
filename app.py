@@ -111,3 +111,79 @@ def admin():
     users = list(users_data)
 
     return render_template("admin.html", appointments=appointments, users=users)
+
+@app.route("/my_appointments")
+@login_required
+def my_appointments():
+    user_id = current_user.id
+    appointments = mongo.db.appointments.find({"userId": user_id})
+    return render_template("my_appointments.html", appointments=appointments)
+
+
+@app.route("/")
+def base():
+    return render_template("base.html")
+
+
+@app.route("/logo")
+def serve_logo():
+    return send_from_directory("assets/img/logovector.webp")
+
+
+@app.route("/logo-clicked")
+def logo_clicked():
+    return redirect(url_for("homepage"))
+
+
+@app.route("/")
+def homepage():
+    # Determine if a user is logged in (replace with your own logic)
+    is_user_logged_in = current_user.is_authenticated if hasattr(
+        current_user, 'is_authenticated') else False
+
+    # Determine if a user is an admin (replace with your own logic)
+    is_admin = current_user.is_admin if hasattr(
+        current_user, 'is_admin') else False
+
+    return render_template("homepage.html", is_user_logged_in=is_user_logged_in, is_admin=is_admin)
+
+
+# REGISTRATION 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        # Check if user exists in the 'users' collection
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists", "error")
+            return redirect(url_for("register"))
+
+        # Generate a unique numerical userId (e.g., incrementing)
+        latest_user = mongo.db.users.find_one(sort=[("userId", -1)])
+        if latest_user:
+            latest_user_id = latest_user["userId"]
+        else:
+            latest_user_id = 0
+        new_user_id = latest_user_id + 1
+
+        # Create a new user document with the generated userId
+        register = {
+            "userId": new_user_id,
+            "username": request.form.get("username").lower(),
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+
+        # Insert the new user document into the 'users' collection
+        mongo.db.users.insert_one(register)
+
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful", "success")
+
+        # Redirect to the same page to clear the flash message upon refresh
+        return redirect(url_for("register"))
+
+    return render_template("register.html")
