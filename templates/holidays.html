@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="center green-text text-darken-3">Holiday Management</h1>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Add a Holiday</span>
+                    <form action="{{ url_for('add_holiday') }}" method="POST">
+                        <div class="input-field">
+                            <input type="text" id="holiday_date" class="datepicker" name="date" required>
+                            <label for="holiday_date">Holiday Date</label>
+                        </div>
+                        <button class="btn waves-effect waves-light green" type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Upcoming Holidays</span>
+                    <ul class="collection">
+                        {% for holiday in holidays %}
+                        <li class="collection-item">
+                            <div>
+                                {{ holiday.date }}
+                                <a href="{{ url_for('edit_holiday', holidayId=holiday._id) }}"
+                                    class="btn-small waves-effect waves-light green right">
+                                    Edit
+                                </a>
+                                <a href="{{ url_for('delete_holiday', holidayId=holiday._id) }}"
+                                    class="btn-small waves-effect waves-light red right">
+                                    Delete
+                                </a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
