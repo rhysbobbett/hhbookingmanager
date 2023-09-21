@@ -432,3 +432,44 @@ def delete_holiday(holidayId):
     return render_template('delete_holiday.html', holiday=holiday)
 
 
+# USER MANAGEMENT
+@app.route("/delete_user/<string:username>", methods=["POST"])
+@login_required
+@admin_required
+def delete_user(username):
+    user_to_delete = mongo.db.users.find_one({"username": username})
+    if request.method == "POST":
+        mongo.db.users.delete_one({"username": username})
+        flash("User deleted successfully.", "success")
+        return redirect(url_for("admin"))
+
+    return render_template("admin.html", user_to_delete=user_to_delete)
+
+
+@app.route("/confirm_delete_user/<string:username>", methods=["GET", "POST"])
+@login_required
+@admin_required
+def confirm_delete_user(username):
+    user_to_delete = mongo.db.users.find_one({"username": username})
+    if request.method == "POST":
+        mongo.db.users.delete_one({"username": username})
+        flash("User deleted successfully.", "success")
+        return redirect(url_for("admin"))
+
+    return render_template("delete_user.html", user_to_delete=user_to_delete)
+
+
+# LOGOUT LOGIC
+@app.route("/logout", methods=["GET", "POST"])
+@login_required
+def logout():
+    # Log the user out using Flask-Login's logout_user() function
+    logout_user()
+    # Clear the session data
+    session.pop("user", None)
+
+    # Flash a message to inform the user they have been logged out
+    flash("You have been logged out.", "success")
+
+    # Redirect the user to the login page (or any other desired page)
+    return redirect(url_for("login"))
