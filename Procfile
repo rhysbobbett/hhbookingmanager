@@ -1,1 +1,1 @@
-web: python /hhbookingsystem/app.py
+web: python /hhbookingmanager/app.py
