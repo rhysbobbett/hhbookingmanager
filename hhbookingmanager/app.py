@@ -135,8 +135,8 @@ def logo_clicked():
     return redirect(url_for("homepage"))
 
 
-@app.route("/")
-def base():
+@app.route("/homepage")
+def homepage():
     # Determine if a user is logged in (replace with your own logic)
     is_user_logged_in = current_user.is_authenticated if hasattr(
         current_user, 'is_authenticated') else False
@@ -145,7 +145,7 @@ def base():
     is_admin = current_user.is_admin if hasattr(
         current_user, 'is_admin') else False
 
-    return render_template("homepage.html", is_user_logged_in=is_user_logged_in, is_admin=is_admin)
+    return render_template("base.html", is_user_logged_in=is_user_logged_in, is_admin=is_admin)
 
 
 # Registration Routing
@@ -488,9 +488,3 @@ def internal_server_error(e):
     return render_template('error500.html'), 500
 
 
-if __name__ == "__main__":
-    app.run(
-        host=os.environ.get("IP", "0.0.0.0"),
-        port=int(os.environ.get("PORT", 5000)),
-        debug=False
-    )
