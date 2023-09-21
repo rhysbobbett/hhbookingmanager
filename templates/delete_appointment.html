@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete Appointment</h1>
+
+<p>Are you sure you want to delete this appointment?</p>
+<p><strong>Date:</strong> {{ appointment.date }}</p>
+<p><strong>Session Length:</strong> {{ appointment.sessionLength }}</p>
+<p><strong>Description:</strong> {{ appointment.description }}</p>
+
+<form method="POST">
+    <input type="submit" value="Delete" class="btn btn-danger">
+    <a href="{{ url_for('adminappointments' if current_user.is_admin else 'my_appointments') }}"
+        class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

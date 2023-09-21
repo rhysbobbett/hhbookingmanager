@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="green-text text-darken-2">Book a Session</h1>
+    <form action="{{ url_for('bookappointment') }}" method="POST">
+        {% if not current_user.is_admin %}
+        <!-- Display User ID for non-admin users -->
+        <div class="input-field col s12 m6">
+            <input type="text" id="userId" name="userId" value="{{ current_user.id }}" readonly class="green-text">
+            <label for="userId" class="active green-text">User ID</label>
+        </div>
+        {% endif %}
+        <div class="input-field col s12 m6">
+            <input type="text" id="fname" name="fname" value="{{ current_user.fname }}" required class="green-text">
+            <label for="fname" class="active green-text">First Name</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <input type="text" id="lname" name="lname" value="{{ current_user.lname }}" required class="green-text">
+            <label for="lname" class="active green-text">Last Name</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="date" name="date" class="datepicker" required>
+            <label for="date" class="active green-text">Session Date</label>
+        </div>
+        <div class="col s12">
+            <p class="green-text">Select Session Length:</p>
+            <label class="green-text">
+                <input name="sessionLength" type="radio" value="half-day" required>
+                <span class="green-text">Half Day</span>
+            </label>
+            <label class="green-text">
+                <input name="sessionLength" type="radio" value="full-day" required>
+                <span class="green-text">Full Day</span>
+            </label>
+        </div>
+        <div class="input-field col s12">
+            <textarea id="description" name="description" class="materialize-textarea green-text" required></textarea>
+            <label for="description" class="active green-text">Session Description</label>
+        </div>
+        <div class="input-field col s12">
+            <button class="btn waves-effect waves-light green" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var datepicker = document.querySelectorAll('.datepicker');
+        var options = {
+            format: 'yyyy-mm-dd', // Set your desired date format
+            autoClose: true, // Close the date picker when a date is selected
+        };
+        M.Datepicker.init(datepicker, options);
+    });
+</script>
+
+{% endblock %}
