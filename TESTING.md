@@ -55,111 +55,24 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 ## Browser Compatibility
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to discuss testing the live/deployed site on various browsers.
-
-Consider testing at least 3 different browsers, if available on your system.
-
-Recommended browsers to consider:
-- [Chrome](https://www.google.com/chrome)
-- [Firefox (Developer Edition)](https://www.mozilla.org/firefox/developer)
-- [Edge](https://www.microsoft.com/edge)
-- [Safari](https://support.apple.com/downloads/safari)
-- [Brave](https://brave.com/download)
-- [Opera](https://www.opera.com/download)
-
-**IMPORTANT**: You must provide screenshots of the tested browsers, to "prove" that you've actually tested them.
-
-Please note, there are services out there that can test multiple browser compatibilities at the same time.
-Some of these are paid services, but some are free.
-If you use these, you must provide a link to the source used for attribution, and multiple screenshots of the results.
-
-Sample browser testing documentation:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 I've tested my deployed project on multiple browsers to check for compatibility issues.
 
 | Browser | Screenshot | Notes |
 | --- | --- | --- |
 | Chrome | ![screenshot](documentation/browser-chrome.png) | Works as expected |
 | Firefox | ![screenshot](documentation/browser-firefox.png) | Works as expected |
-| Edge | ![screenshot](documentation/browser-edge.png) | Works as expected |
-| Safari | ![screenshot](documentation/browser-safari.png) | Minor CSS differences |
-| Brave | ![screenshot](documentation/browser-brave.png) | Works as expected |
-| Opera | ![screenshot](documentation/browser-opera.png) | Minor differences |
-| Internet Explorer | ![screenshot](documentation/browser-iex.png) | Does not work as expected |
-| x | x | repeat for any other tested browsers |
+| Bing | ![screenshot](documentation/browser-bing.png) | Works as expected |
 
 ## Responsiveness
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to discuss testing the live/deployed site on various device sizes.
-
-The minimum requirement is for the following 3 tests:
-- Mobile
-- Tablet
-- Desktop
-
-**IMPORTANT**: You must provide screenshots of the tested responsiveness, to "prove" that you've actually tested them.
-
-Using the "amiresponsive" mockup image (or similar) does not suffice the requirements.
-Consider using some of the built-in device sizes in the Developer Tools.
-
-If you have tested the project on your actual mobile phone or tablet, consider also including screenshots of these as well.
-It showcases a higher level of manual tests, and can be seen as a positive inclusion!
-
-Sample responsiveness testing documentation:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 I've tested my deployed project on multiple devices to check for responsiveness issues.
 
 | Device | Screenshot | Notes |
 | --- | --- | --- |
-| Mobile (DevTools) | ![screenshot](documentation/responsive-mobile.png) | Works as expected |
-| Tablet (DevTools) | ![screenshot](documentation/responsive-tablet.png) | Works as expected |
-| Desktop | ![screenshot](documentation/responsive-desktop.png) | Works as expected |
-| Google Pixel 7 Pro | ![screenshot](documentation/responsive-pixel.png) | Works as expected |
-| iPhone 12 | ![screenshot](documentation/responsive-iphone.png) | Works as expected |
-
-<details>
-<summary>IPhone 12 Pro</summary>
-<br>
-
-| Device | Page | Screenshot|
-| ----------- | ----------- |---------------- |
-| IPhone 12 Pro| Homepage | ![screenshot](documentation/resp-homepage-iphone12.png)|
-| | Log In | &check; |
-| | Register | &check; |
-| | Administration | &check; |
-| | Book Appointments | &check; |
-| | Holidays | &check; |
-| | Edit Users | &check; |
-| | 404 Page | &check; |
-| | 500 Page | &check; |
-</details>
-
-<details>
-<summary>IPhone 12 Pro</summary>
-<br>
-
-| Device | Page | Screenshot|
-| ----------- | ----------- |---------------- |
-| Samsung Galaxy Note 3| Homepage | ![screenshot](documentation/resp-homepage-galaxynote3.png)|
-| | Log In | &check; |
-| | Register | &check; |
-| | Administration | &check; |
-| | Book Appointments | &check; |
-| | Holidays | &check; |
-| | Edit Users | &check; |
-| | 404 Page | &check; |
-| | 500 Page | &check; |
-</details>
-
-
+| Galaxy Note 3 (DevTools) | ![screenshot](documentation/resp-homepage-galaxynote3.png) | Works as expected |
+| iPad Pro (DevTools) | ![screenshot](documentation/resp-homepage-ipadpro.png) | Works as expected |
+| Desktop (HP Monitor) | ![screenshot](documentation/resp-homepage-desktophpmonitor.png) | Works as expected |
+| iPhone 12 | ![screenshot](documentation/resp-homepage-iphone12.png) | Works as expected |
+| Samsung 4K TV | ![screenshot](documentation/resp-homepage-samsung4khdrsmarttv.png) | Works as expected |
 
 ## Lighthouse Audit
 
@@ -185,7 +98,7 @@ Forms:
 - Users cannot submit to an empty form in appointments
 - Passwords must contain capital letters and at least 1 special character.
 
-Flask/Django:
+Flask:
 - Users cannot brute-force a URL to navigate to a restricted page such as admin.html.
 - Users cannot perform CRUD functionality while logged-out
 - User-A should not be able to manipulate data belonging to User-B, or vice versa
@@ -197,29 +110,29 @@ in preventing multiple signing up and scripting against the website, a potential
 
 ## User Story Testing
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 | User Story | Screenshot | Notes |
 | --- | --- | --- |
-| As a new site user, I would like to immeditately know who this site is for, so I know I'm on the right website. | ![screenshot](documentation/feature01.png) | The landing page has a welcome span with buttons for direct access to the main features of the site. |
+| As a new site user, I would like to immediately be aware I'm at the right website and book my appointment for a gardening maintenance session | ![screenshot](documentation/feature01.png) | The landing page has a welcome span with buttons for direct access to the main features of the site. |
 | As a new site user, I want simplicity and to use straight forward navigation, so that I can access what I require quickly. | ![screenshot](documentation/feature02.png) | The nav is clear and adapts depending on user or admin, the navbar collapses on mobile with the same links available.
 | As a new site user, I would like to book sessions easily. | ![screenshot](documentation/feature03.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature04.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature05.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature06.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature07.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature08.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature09.png) |
-| repeat for all remaining user stories | x |
+| As a returning site user, I would like to book appointments without filling out forms, so that I can speed up the process. | ![screenshot](documentation/feature04.png) | The user's first name and last name are automatically populated into booking forms.
+| As a site administrator, I should be able to manage any user session, should I get a cancellation by other means of communication so that I can consistently track all appointments on one screen. | ![screenshot](documentation/feature05.png) | Admins can see all sessions booked on the platform, and have control over rescheduling and deletion.
+| As a site administrator, I should be able to manage user accounts, so that I can delete clients from my records. | ![screenshot](documentation/feature06.png) | The admin can delete users, but is unable to delete other admins from the administration page
+| As a site administrator, I should be able to manage administrator holidays, so that I can manage annual leave for employees, preventing users from booking sessions on those days. | ![screenshot](documentation/feature07.png) | 
 
 ## Bugs
 
+Issue: The function to control holiday and user booking clashes failed to work correctly and will need to be investigated further. 
+Solution: My code for this function needs to be investigated further. I also wrote code to prevent more than 2 half day sessions being booked on a given date which has failed to function.
 
+Issue: Deployment due to additional queries in the mongodb form prevented the flask app from reading user data correctly.
+Solution: This was fixed by removing the bad query document from the mongodb collection.
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+Issue: The flask routing for "bookappointments" and another flask routing for "manage_sessions" have similar code but function in slightly different ways as one has admin authority and performs checks while the other doesn't.
+Solution: This is one of the key points of the site and removing one or the other has caused more problems than good at this point in time, I have decided to keep this code seperate for now as it controls so much functionality of the booking appointments procedures until I can figure out where I've made a logic error. It can be made more concise in the future when other features require implementation.
 
-If you legitimately cannot find any unfixed bugs or warnings, then use the following sentence:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+Issue: Early on in the project I had issues connecting to the mongodb database as I had made a typo in the URI.
+Solution: This was a simple fix once it was found but caused a few delays in getting the database up and running.
 
 There are no remaining bugs that I am aware of.
