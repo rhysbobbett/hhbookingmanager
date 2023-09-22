@@ -1,5 +1,7 @@
 # Hearten Horticulture Booking System
 
+![amiresponsive](documentation/amirespon.png)
+
 A local gardening business called Hearten Horticulture requires a booking a system
 
 The project should be able to function as a portal for customers to book sessions without coming into conflict with other customer's booking sessions. The system should be able to tell customers when the company is free to work on their garden while keeping their user data anonymous for others to see.
